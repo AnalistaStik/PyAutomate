@@ -235,6 +235,10 @@ while True:
 
 logging.info(f"Total de pedidos baixados: {numero_pedidos}")
 
+time.sleep(time_medium)  
+pyautogui.moveTo(1895, 10)
+pyautogui.click()
+
 time.sleep(time_medium)
 pyautogui.alert(
     text=f"Total de pedidos baixados: {numero_pedidos}", 

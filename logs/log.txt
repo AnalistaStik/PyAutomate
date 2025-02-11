@@ -1,8 +1,14 @@
-2025-02-11 15:15:24,150 - INFO - Programa Iniciado
-2025-02-11 15:16:36,962 - INFO - Programa Iniciado
-2025-02-11 15:16:59,575 - INFO - Login no TopManager realizado com sucesso.
-2025-02-11 15:17:00,611 - INFO - Janela 'TopManager' maximizada.
-2025-02-11 15:17:06,474 - INFO - Maximização via coordenada: (679, 86)
-2025-02-11 15:17:07,476 - INFO - Acesso à aba de documentos eletrônicos.
-2025-02-11 15:17:09,797 - INFO - Nenhum pedido encontrado ou fim da lista.
-2025-02-11 15:17:09,797 - INFO - Total de pedidos baixados: 0
+2025-02-11 15:24:21,962 - INFO - Programa Iniciado
+2025-02-11 15:24:43,313 - INFO - Login no TopManager realizado com sucesso.
+2025-02-11 15:24:44,332 - INFO - Janela 'TopManager' maximizada.
+2025-02-11 15:24:50,197 - INFO - Maximização via coordenada: (679, 86)
+2025-02-11 15:24:51,198 - INFO - Acesso à aba de documentos eletrônicos.
+2025-02-11 15:24:53,520 - INFO - Nenhum pedido encontrado ou fim da lista.
+2025-02-11 15:24:53,521 - INFO - Total de pedidos baixados: 0
+2025-02-11 15:27:09,467 - INFO - Programa Iniciado
+2025-02-11 15:27:30,120 - INFO - Login no TopManager realizado com sucesso.
+2025-02-11 15:27:31,134 - INFO - Janela 'TopManager' maximizada.
+2025-02-11 15:27:36,994 - INFO - Maximização via coordenada: (679, 86)
+2025-02-11 15:27:37,995 - INFO - Acesso à aba de documentos eletrônicos.
+2025-02-11 15:27:40,317 - INFO - Nenhum pedido encontrado ou fim da lista.
+2025-02-11 15:27:40,317 - INFO - Total de pedidos baixados: 0
