@@ -1,0 +1,50 @@
+{
+    "coordenadas": {
+        "Consulta": [
+            218,
+            32
+        ],
+        "Doc. Eletronico": [
+            252,
+            56
+        ],
+        "Doc_Eletronico": [
+            494,
+            51
+        ],
+        "Filtro": [
+            210,
+            77
+        ],
+        "periodo": [
+            255,
+            91
+        ],
+        "Empresa": [
+            452,
+            90
+        ],
+        "Maximizar Doc. Eletronico": [
+            679,
+            86
+        ],
+        "N. Pedido Base": [
+            706,
+            127
+        ],
+        "Pos. Acrobat": [
+            104,
+            41
+        ],
+        "Fechar Janela": [
+            1894,
+            15
+        ],
+        "Fechar_janela_navegador": [
+            1893,
+            19
+        ]
+    },
+    "vers\u00e3o": "1.0.0",
+    "versao": "1.0.0"
+}
