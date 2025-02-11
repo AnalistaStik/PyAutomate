@@ -3,8 +3,6 @@ import subprocess
 import time
 import pyperclip 
 import logging
-import os
-import requests
 import pygetwindow as gw
 from datetime import datetime
 
@@ -14,58 +12,6 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
-
-# Função para verificar a versão mais recente no GitHub
-def verificar_versao():
-    try:
-        url_releases = "https://api.github.com/repos/AnalistaStik/PyAutomate/releases/latest"
-        
-        response = requests.get(url_releases)
-        
-        release_data = response.json()
-        print("Resposta da API do GitHub:", release_data)
-        
-        if "tag_name" not in release_data:
-            print("Chave 'tag_name' não encontrada na resposta.")
-            return
-        
-        versao_mais_recente = release_data["tag_name"]
-        download_url = release_data["assets"][0]["browser_download_url"]
-        
-        versao_atual = "1.0.0"  
-
-        if versao_atual != versao_mais_recente:
-            print(f"Nova versão disponível: {versao_mais_recente}. Atualizando...")
-            atualizar_programa(download_url)
-        else:
-            print("Você já está utilizando a versão mais recente.")
-    
-    except Exception as e:
-        print(f"Erro ao verificar versão no GitHub: {e}")
-
-# Função para fazer o download e substituir o executável
-def atualizar_programa(download_url):
-    try:
-        resposta = requests.get(download_url)
-        with open("novo_programa.exe", "wb") as file:
-            file.write(resposta.content)
-        
-        print("Novo executável baixado com sucesso. Instalando...")
-
-        if os.path.exists("Rb_Lupo.exe"):
-            os.remove("Rb_Lupo.exe")
-        
-        os.rename("novo_programa.exe", "Rb_Lupo.exe")
-        
-        subprocess.run("Rb_Lupo.exe")
-        
-        print("Programa atualizado e reiniciado com sucesso.")
-    
-    except Exception as e:
-        print(f"Erro ao atualizar o programa: {e}")
-
-# Verificar se há uma nova versão
-verificar_versao()
 
 # Tempos de espera
 time_short = 1
@@ -196,7 +142,7 @@ def baixar_pedido(pedido_x, pedido_y):
 def programar_automatizacao():
     while True:
         agora = datetime.now()
-        hora_hoje = datetime(agora.year, agora.month, agora.day, 23, 50)
+        hora_hoje = datetime(agora.year, agora.month, agora.day, 14, 2)
         # Se o horário chegou, sai do loop e continua o processo
         if agora >= hora_hoje:
             print("Hora de começar o processo de automação!")
