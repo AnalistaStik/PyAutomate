@@ -14,9 +14,10 @@ logging.basicConfig(
 )
 
 # Tempos de espera
+time_login = 20
 time_short = 1
 time_medium = 3
-time_long = 5
+time_long = 12
 
 # Posições dos elementos na tela       
 coordenadas = {
@@ -24,7 +25,7 @@ coordenadas = {
     "Doc. Eletronico": (252, 56),
     "Doc_Eletronico": (494, 51),
     "Filtro": (210, 77),
-    "periodo": (255, 91),
+    "periodo": (279, 91),
     "Empresa": (452, 90),
     "Maximizar Doc. Eletronico": (679, 86),
     "N. Pedido Base": (706, 127),
@@ -68,14 +69,7 @@ def maximizar_janela(titulo_parcial, coordenada_maximizar=None):
 def baixar_XML():
     try:
         time.sleep(time_short)
-        pyautogui.click(button="right")
-        time.sleep(time_short)
-        
-        for _ in range(6):  
-            pyautogui.press("down")
-            time.sleep(0.2)
-
-        pyautogui.press("enter")  
+        pyautogui.press("F8")
         time.sleep(time_short)
 
         pyautogui.moveTo(845, 585)
@@ -86,7 +80,7 @@ def baixar_XML():
         pyautogui.click()
         time.sleep(time_short)
 
-        for _ in range(29):
+        for _ in range(34):
             pyautogui.press("down")
             time.sleep(0.2)
 
@@ -120,7 +114,7 @@ def baixar_pedido(pedido_x, pedido_y):
         pyautogui.click()
         time.sleep(time_long)
 
-        pyautogui.moveTo(99, 240)  
+        pyautogui.moveTo(90, 202)  
         pyautogui.click()
         time.sleep(time_long)
 
@@ -166,7 +160,7 @@ for _ in range(3):
         pyautogui.click()
         preencher_campo("123456")
         pyautogui.press("enter")
-        time.sleep(10)
+        time.sleep(time_login)
 
         if gw.getWindowsWithTitle("TopManager"):
             logging.info("Login no TopManager realizado com sucesso.")
@@ -190,6 +184,45 @@ try:
     time.sleep(time_short)
 
     maximizar_janela('Doc. Eletronico', coordenadas["Maximizar Doc. Eletronico"])
+    time.sleep(time_short)
+    
+    pyautogui.moveTo(coordenadas['Filtro'])
+    pyautogui.click()
+    time.sleep(time_short)
+
+    pyautogui.moveTo(coordenadas['periodo'])
+    pyautogui.click()
+    time.sleep(time_short)
+    pyautogui.click(button='left')
+    time.sleep(time_short)
+    pyautogui.moveTo(274, 212)
+    time.sleep(time_short)
+    pyautogui.click()
+    time.sleep(time_short)
+    pyautogui.press("tab")
+    time.sleep(time_short)
+    preencher_campo('2')
+    time.sleep(time_short)
+    pyautogui.press('tab')
+    time.sleep(time_short)
+    pyautogui.press('tab')
+    time.sleep(time_short)
+    pyautogui.press('tab')
+    time.sleep(time_short)
+
+    pyautogui.press('enter')        
+    time.sleep(time_medium)
+    preencher_campo('lupo')
+    time.sleep(time_short)
+    pyautogui.press('enter')
+    time.sleep(time_short)
+    pyautogui.press('enter')
+    time.sleep(time_short)
+    pyautogui.press('enter')
+    time.sleep(time_short)
+
+    pyautogui.press('F5')
+    time.sleep(time_long)
     logging.info("Acesso à aba de documentos eletrônicos.")
 
 except Exception as e:
@@ -200,6 +233,8 @@ except Exception as e:
 # Configurações
 pedido_x, pedido_y = coordenadas["N. Pedido Base"]
 incremento_y = 18  # Distância entre as linhas dos pedidos
+deslocamento_x = 100  # Ajuste lateral para clicar na opção "Abrir Pedido"
+deslocamento_y = 10   # Pequeno ajuste vertical se necessário
 numero_pedidos = 0
 pedido_anterior = None  # Variável para armazenar o pedido anterior
 
@@ -209,16 +244,21 @@ while True:
         pyautogui.click()
         time.sleep(time_short)
 
+        # Copiar o conteúdo
         pyautogui.hotkey("ctrl", "c")
         time.sleep(time_short)
         pedido_atual = pyperclip.paste().strip()
 
+
+        # Verificar se a célula está vazia (último pedido atingido)
         if not pedido_atual:
-            logging.info("Nenhum pedido encontrado ou fim da lista.")
+            print("Nenhum pedido encontrado ou fim da lista.")
             break
 
+        # Verificar se o pedido atual é o mesmo que o anterior
         if pedido_atual == pedido_anterior:
-            logging.info("Pedido repetido, encerrando busca.")
+            print("Pedido repetido, encerrando a busca")
+            pedido_y += incremento_y  # Pular para a próxima linha
             break
 
         logging.info(f"Baixando pedido: {pedido_atual}")
